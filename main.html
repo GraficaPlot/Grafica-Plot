@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GRAFICA PLOT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(180deg, #2e003e, #5f0099, #000);
+            color: white;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 100px 20px 60px;
+        }
+        header h1 {
+            font-family: 'Russo One', sans-serif;
+            font-size: 64px;
+            background: linear-gradient(90deg, violet, white, violet);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: shine 3s infinite alternate;
+        }
+        header h1:hover {
+            filter: brightness(1.3);
+        }
+        header p {
+            font-size: 24px;
+            font-weight: 400;
+            color: #eee;
+            margin-top: 10px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .nav {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .nav a:hover {
+            transform: scale(1.1);
+            color: violet;
+        }
+        .section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .section h2 {
+            font-family: 'Russo One', sans-serif;
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: violet;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            opacity: 0;
+            animation: fadeInUp 2s forwards ease;
+            animation-delay: 0.5s;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 8px;
+            transition: transform 0.4s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            animation: bounce 2s infinite;
+        }
+        .whatsapp-btn img {
+            width: 30px;
+            height: 30px;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes shine {
+            0% {
+                text-shadow: 0 0 5px #fff;
+            }
+            100% {
+                text-shadow: 0 0 20px violet, 0 0 30px white;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GRAFICA PLOT</h1>
+        <p>Impresiones de alta calidad al mejor precio</p>
+        <div class="nav">
+            <a href="#trabajos">Trabajos</a>
+            <a href="https://www.instagram.com/graficaplot/?hl=es-la" target="_blank">Instagram</a>
+            <a href="https://wa.me/1234567890" target="_blank">Whatsapp</a>
+            <a href="#precios">Precios</a>
+        </div>
+    </header>
+    <section class="section" id="trabajos">
+        <h2>Trabajos Realizados</h2>
+        <div class="gallery">
+            <img src="trabajo1.jpg" alt="Trabajo 1" />
+            <img src="trabajo2.jpg" alt="Trabajo 2" />
+            <img src="trabajo3.jpg" alt="Trabajo 3" />
+        </div>
+    </section>
+    <section class="section" id="precios">
+        <h2>Precios</h2>
+        <ul>
+            <li>Calcomanías personalizadas - Desde $5</li>
+            <li>Carteles en lona - Desde $15 por metro</li>
+            <li>Tarjetas personales - Desde $10 por 100 unidades</li>
+        </ul>
+    </section>
+    <a href="https://api.whatsapp.com/send?phone=543624260602&text=%F0%9F%91%8B%20Hola!%20me%20comunico%20por%3A%20" class="whatsapp-btn" target="_blank">
+        <img src="whatsapp-logo.png" alt="WhatsApp" />
+    </a>
+</body>
+</html>

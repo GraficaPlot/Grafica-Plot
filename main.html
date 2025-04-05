@@ -1,162 +1,243 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GRAFICA PLOT</title>
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(180deg, #2e003e, #5f0099, #000);
-            color: white;
-            overflow-x: hidden;
-        }
-        header {
-            text-align: center;
-            padding: 100px 20px 60px;
-        }
-        header h1 {
-            font-family: 'Russo One', sans-serif;
-            font-size: 64px;
-            background: linear-gradient(90deg, violet, white, violet);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            animation: shine 3s infinite alternate;
-        }
-        header h1:hover {
-            filter: brightness(1.3);
-        }
-        header p {
-            font-size: 24px;
-            font-weight: 400;
-            color: #eee;
-            margin-top: 10px;
-            animation: fadeIn 2s ease-in-out;
-        }
-        .nav {
-            text-align: center;
-            margin-top: 30px;
-        }
-        .nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            transition: transform 0.3s;
-        }
-        .nav a:hover {
-            transform: scale(1.1);
-            color: violet;
-        }
-        .section {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .section h2 {
-            font-family: 'Russo One', sans-serif;
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: violet;
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            opacity: 0;
-            animation: fadeInUp 2s forwards ease;
-            animation-delay: 0.5s;
-        }
-        .gallery img {
-            width: 100%;
-            border-radius: 8px;
-            transition: transform 0.4s ease;
-        }
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            padding: 15px;
-            border-radius: 50%;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
-            animation: bounce 2s infinite;
-        }
-        .whatsapp-btn img {
-            width: 30px;
-            height: 30px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GraficaPlot - Inicio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to bottom, #4b0082, #8a2be2, #ffffff, #4b0082);
+      color: white;
+      overflow-x: hidden;
+    }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
+    /* INTRO ANIMACIÓN */
+    .intro {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background-color: #4b0082;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeOut 1s ease 2.5s forwards;
+    }
 
-        @keyframes shine {
-            0% {
-                text-shadow: 0 0 5px #fff;
-            }
-            100% {
-                text-shadow: 0 0 20px violet, 0 0 30px white;
-            }
-        }
+    .intro-title {
+      font-family: 'Russo One', sans-serif;
+      font-size: 5vw;
+      color: white;
+      animation: bounceZoom 1.5s ease;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
+    @keyframes bounceZoom {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    #main-content {
+      display: none;
+      animation: fadeInMain 1s ease forwards;
+    }
+
+    @keyframes fadeInMain {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* PORTADA */
+    .hero {
+      text-align: center;
+      padding: 10vh 5vw;
+      animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+      0% { transform: translateY(-100px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .main-title {
+      font-family: 'Russo One', sans-serif;
+      font-size: 6vw;
+      color: white;
+      text-shadow: 0 0 15px violet;
+      transition: all 0.3s ease;
+      animation: shakeGlow 2s infinite;
+    }
+
+    @keyframes shakeGlow {
+      0%, 100% { transform: scale(1); text-shadow: 0 0 10px violet; }
+      50% { transform: scale(1.05) rotate(1deg); text-shadow: 0 0 25px white; }
+    }
+
+    .main-title:hover {
+      transform: scale(1.1);
+    }
+
+    .subtitle {
+      font-size: 1.8vw;
+      margin-top: 1vh;
+      font-weight: 400;
+      color: #eee;
+      text-shadow: 0 0 5px #ccc;
+      animation: floatText 3s ease-in-out infinite;
+    }
+
+    @keyframes floatText {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .buttons {
+      margin-top: 3vh;
+      animation: fadeUp 2s ease;
+    }
+
+    @keyframes fadeUp {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .btn {
+      padding: 1em 2em;
+      margin: 1vh;
+      background: #8a2be2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px #00000044;
+    }
+
+    .btn:hover {
+      transform: scale(1.1) rotate(-2deg);
+      box-shadow: 0 0 20px white;
+    }
+
+    /* PORTAFOLIO */
+    .portfolio {
+      padding: 5vh 5vw;
+      background-color: #1a1a1a;
+      text-align: center;
+    }
+
+    .portfolio h2 {
+      font-size: 2.5vw;
+      margin-bottom: 4vh;
+      animation: flashIn 1s ease-out;
+    }
+
+    @keyframes flashIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2vw;
+    }
+
+    .item {
+      overflow: hidden;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+      opacity: 0;
+      animation: zoomFadeIn 1s ease forwards;
+      animation-delay: calc(var(--i, 1) * 0.4s);
+    }
+
+    .item img {
+      width: 100%;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .item:hover img {
+      transform: scale(1.2);
+    }
+
+    @keyframes zoomFadeIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* FOOTER */
+    .footer {
+      background-color: #111;
+      color: #aaa;
+      padding: 3vh;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #ccc;
+      margin: 0 1em;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-shadow: 0 0 5px white;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>GRAFICA PLOT</h1>
-        <p>Impresiones de alta calidad al mejor precio</p>
-        <div class="nav">
-            <a href="#trabajos">Trabajos</a>
-            <a href="https://www.instagram.com/graficaplot/?hl=es-la" target="_blank">Instagram</a>
-            <a href="https://wa.me/1234567890" target="_blank">Whatsapp</a>
-            <a href="#precios">Precios</a>
-        </div>
+  <!-- ANIMACIÓN DE INTRO -->
+  <div id="intro" class="intro">
+    <h1 class="intro-title">GRAFICAPLOT</h1>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div id="main-content">
+    <!-- PORTADA -->
+    <header class="hero">
+      <h1 class="main-title">GRAFICAPLOT</h1>
+      <p class="subtitle">Impresiones de alta calidad al mejor precio</p>
+      <div class="buttons">
+        <a href="#portafolio" class="btn">Ver Portafolio</a>
+        <a href="https://wa.me/1234567890" class="btn">Encargar por WhatsApp</a>
+      </div>
     </header>
-    <section class="section" id="trabajos">
-        <h2>Trabajos Realizados</h2>
-        <div class="gallery">
-            <img src="trabajo1.jpg" alt="Trabajo 1" />
-            <img src="trabajo2.jpg" alt="Trabajo 2" />
-            <img src="trabajo3.jpg" alt="Trabajo 3" />
-        </div>
+
+    <!-- PORTAFOLIO -->
+    <section id="portafolio" class="portfolio">
+      <h2>Nuestros Trabajos</h2>
+      <div class="grid">
+        <div class="item" style="--i:1"> <img src="trabajo1.jpg" alt="Trabajo 1"> </div>
+        <div class="item" style="--i:2"> <img src="trabajo2.jpg" alt="Trabajo 2"> </div>
+        <div class="item" style="--i:3"> <img src="trabajo3.jpg" alt="Trabajo 3"> </div>
+        <div class="item" style="--i:4"> <img src="trabajo4.jpg" alt="Trabajo 4"> </div>
+      </div>
     </section>
-    <section class="section" id="precios">
-        <h2>Precios</h2>
-        <ul>
-            <li>Calcoman�as personalizadas - Desde $5</li>
-            <li>Carteles en lona - Desde $15 por metro</li>
-            <li>Tarjetas personales - Desde $10 por 100 unidades</li>
-        </ul>
-    </section>
-    <a href="https://api.whatsapp.com/send?phone=543624260602&text=%F0%9F%91%8B%20Hola!%20me%20comunico%20por%3A%20" class="whatsapp-btn" target="_blank">
-        <img src="whatsapp-logo.png" alt="WhatsApp" />
-    </a>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+      <a href="https://www.instagram.com/graficaplot" target="_blank">Instagram</a>
+      <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
+      <a href="#precios">Precios</a>
+    </footer>
+  </div>
+
+  <!-- SCRIPT PARA INTRO -->
+  <script>
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("intro").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+      }, 3000);
+    });
+  </script>
 </body>
 </html>
